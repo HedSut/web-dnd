@@ -1,3 +1,5 @@
+const sphp = require('sphp');
+sphp.setOptions({ cgiEngine: "C:\\Program Files\\phpphp-cgi.exe" });
 const path = require('path');
 const express = require('express'); //Import the express dependency
 const app = express();              //Instantiate an express app, the main work horse of this server
@@ -15,6 +17,7 @@ router.get("/register", (req, res) => {
 });
 
 
+app.use(sphp.express('pages'));
 app.use(express.static("public"));
 app.use(express.static("pages"));
 app.use('/', router);
